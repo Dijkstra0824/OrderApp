@@ -3,7 +3,7 @@ package com.fql.orderapp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackageClasses = {})
 public class OrderAppApplication {
 
     public static void main(String[] args) {

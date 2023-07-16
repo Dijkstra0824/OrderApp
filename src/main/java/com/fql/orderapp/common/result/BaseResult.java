@@ -2,12 +2,12 @@ package com.fql.orderapp.common.result;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fql.orderapp.common.base.BaseBean;
+import com.fql.orderapp.common.exception.CommonError;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
-
 
 @Getter
 @Setter
@@ -48,14 +48,6 @@ public abstract class BaseResult<T, Result extends BaseResult<T, Result>>  exten
      * 返回结果
      */
     private T data;
-
-    /**
-     * 是否失败, 方便后端调用处理时使用
-     * @return
-     */
-    public boolean isNotSuccess() {
-        return !success;
-    }
 
     /**
      * 根据数据对象创建Result
@@ -99,7 +91,7 @@ public abstract class BaseResult<T, Result extends BaseResult<T, Result>>  exten
     public Result ofError() {
         this.setSuccess(Boolean.FALSE);
         this.setErrorCode("system error");
-        this.setErrorMsg("system error");
+        this.setErrorMsg("系统错误");
         return (Result) this;
     }
 
@@ -118,6 +110,16 @@ public abstract class BaseResult<T, Result extends BaseResult<T, Result>>  exten
     }
 
     /**
+     * 根据错误枚举对象创建错误Result
+     *
+     * @param commonError
+     * @return
+     */
+    public Result ofError(CommonError commonError) {
+        return ofError(commonError.getErrorCode(), commonError.getErrorMsg());
+    }
+
+    /**
      * 根据错误消息创建错误Result
      *
      * @param errorMsg
@@ -128,4 +130,36 @@ public abstract class BaseResult<T, Result extends BaseResult<T, Result>>  exten
         result.setErrorMsg(errorMsg);
         return result;
     }
+
+    /**
+     * 根据错误枚举对象和错误消息创建Result
+     *
+     * @param commonError
+     * @param errorMsg  错误消息
+     * @return          返回的errorMsg以传进来的为准
+     */
+    public Result ofError(CommonError commonError, String errorMsg) {
+        Result result = ofError(commonError);
+        if(StringUtils.isNotBlank(errorMsg)) {
+            result.setErrorMsg(errorMsg);
+        }
+        return result;
+    }
+
+    /**
+     *
+     * @param commonError
+     * @param errorMsg
+     * @param exceptionStack    错误堆栈信息,方便问题排查
+     * @return
+     */
+    public Result ofError(CommonError commonError, String errorMsg, String exceptionStack) {
+        Result result = ofError(commonError);
+        if(StringUtils.isNotBlank(errorMsg)) {
+            result.setErrorMsg(errorMsg);
+        }
+        result.setExceptionStack(exceptionStack);
+        return result;
+    }
+
 }

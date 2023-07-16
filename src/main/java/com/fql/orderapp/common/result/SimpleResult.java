@@ -173,4 +173,3 @@ public class SimpleResult<T> extends BaseResult<SimpleBean<T>, SimpleResult<T>> 
     }
 
 }
-

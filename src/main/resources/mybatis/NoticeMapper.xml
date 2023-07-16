@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fql.orderapp.mapper.NoticeMapper">
+
+    <resultMap id="BaseResultMap" type="com.fql.orderapp.domain.NoticeDO">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="content" jdbcType="LONGNVARCHAR" property="content" />
+        <result column="date_add" jdbcType="DATE" property="dateAdd" />
+        <result column="is_remind" jdbcType="TINYINT" property="isRemind" />
+        <result column="is_show" jdbcType="TINYINT" property="isShow" />
+        <result column="remind_uid" jdbcType="INTEGER" property="remindUid" />
+        <result column="title" jdbcType="LONGNVARCHAR" property="title" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, content, date_add, is_remind, is_show, remind_uid, title, user_id
+    </sql>
+
+    <select id="selectNoticeLastOne" resultType="com.fql.orderapp.domain.NoticeDO">
+        select
+        <include refid="Base_Column_List" />
+        from notice
+        order by id desc limit 1
+    </select>
+</mapper>
