@@ -21,7 +21,6 @@ public class SimpleBean<T> extends BaseBean {
 
     private T value;
 
-
     public static <T> SimpleBean<T> of(T data) {
         // 如果data为null, 则不做封装
         if(null == data) {

@@ -1,7 +1,10 @@
 package com.fql.orderapp.domain;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class NoticeDO {
 
     private String content;

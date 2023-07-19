@@ -1,9 +1,11 @@
 package com.fql.orderapp;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackageClasses = {})
+@MapperScan("com.fql.orderapp.mapper")
+@SpringBootApplication()
 public class OrderAppApplication {
 
     public static void main(String[] args) {

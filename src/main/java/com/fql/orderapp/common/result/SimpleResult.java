@@ -17,14 +17,6 @@ public class SimpleResult<T> extends BaseResult<SimpleBean<T>, SimpleResult<T>> 
 
     private static final long serialVersionUID = 3104068223977866861L;
 
-    public SimpleResult() {
-        super();
-    }
-
-    public SimpleResult(boolean success, String msg, String errorMsg, String errorCode, String exceptionStack, SimpleBean<T> data) {
-        super(success, msg, errorMsg, errorCode, exceptionStack, data);
-    }
-
     /**
      * 返回一个成功的空对象
      *

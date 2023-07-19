@@ -1,18 +1,19 @@
 package com.fql.orderapp.controller.notice.response;
 
+import com.fql.orderapp.common.base.BaseBean;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class NoticeDTO {
+public class NoticeDTO extends BaseBean {
 
-    private String content;
-    private Date dateAdd;
-    private int id;
-    private boolean isRemind;
-    private boolean isShow;
-    private int remindUid;
-    private String title;
-    private int userId;
+    public String content;
+    public Date dateAdd;
+    public int id;
+    public boolean isRemind;
+    public boolean isShow;
+    public int remindUid;
+    public String title;
+    public int userId;
 }

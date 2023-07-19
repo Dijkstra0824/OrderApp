@@ -18,14 +18,6 @@ public class PageResult<T> extends BaseResult<PageBean<T>, PageResult<T>> {
 
     private static final long serialVersionUID = 7837573254198017134L;
 
-    public PageResult() {
-        super();
-    }
-
-    public PageResult(boolean success, String msg, String errorMsg, String errorCode, String exceptionStack, PageBean<T> data) {
-        super(success, msg, errorMsg, errorCode, exceptionStack, data);
-    }
-
     /**
      * 返回一个空的成功的PageResult,数据对象和分页信息都取默认值
      *
