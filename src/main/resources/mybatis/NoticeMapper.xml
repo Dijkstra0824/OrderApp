@@ -25,4 +25,8 @@
         from notice
         order by id desc limit 1
     </select>
+
+    <select id="selectNoticeDetailById" resultType="java.lang.String">
+        select content from notice where id = #{id}
+    </select>
 </mapper>

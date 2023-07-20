@@ -21,4 +21,10 @@ public class NoticeServiceImpl implements NoticeService {
         NoticeDTO noticeDTO = NoticeConvert.CONVERT.toDTO(noticeDO);
         return SimpleResult.success(noticeDTO);
     }
+
+    @Override
+    public SimpleResult<String> getNoticeDetailById(int id) {
+        String noticeDetail = noticeMapper.selectNoticeDetailById(id);
+        return SimpleResult.success(noticeDetail);
+    }
 }

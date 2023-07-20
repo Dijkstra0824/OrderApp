@@ -6,4 +6,6 @@ import com.fql.orderapp.controller.notice.response.NoticeDTO;
 public interface NoticeService {
 
     SimpleResult<NoticeDTO> getNotice();
+
+    SimpleResult<String> getNoticeDetailById(int id);
 }

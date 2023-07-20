@@ -7,4 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface NoticeMapper {
 
     NoticeDO selectNoticeLastOne();
+
+    String selectNoticeDetailById(int id);
 }
